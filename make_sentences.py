@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 import argparse
+import pandas as pd
 
 
 def run(args):
@@ -38,3 +39,15 @@ my_parser.add_argument('-d', '--data',
 args = my_parser.parse_args()
 
 input_path = args.input
+
+
+########################################
+
+# Read in csv file
+
+data = pd.read_csv(input_path)
+
+
+for index, row in data.iterrows():
+    with open(row['country'] + '.txt', 'w') as f:
+        f.write(f''row[''], row['c2'])
