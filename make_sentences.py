@@ -1,28 +1,6 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 import argparse
 import pandas as pd
-
-
-def run(args):
-    filename = args.input  # these match the "dest": dest="input"
-    output_filename = args.output  # from dest="output"
-    qual = args.quality_score  # default is I
-
-    # Do stuff
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="Read a CSV file and create sentences with data")
-    parser.add_argument("-d", help="csv input file",
-                        dest="input", type=str, required=True)
-    parser.set_defaults(func=run)
-    args = parser.parse_args()
-    args.func(args)
-
-
-if __name__ == "__main__":
-    main()
 
 
 # Create the parser
@@ -39,15 +17,24 @@ my_parser.add_argument('-d', '--data',
 args = my_parser.parse_args()
 
 input_path = args.input
-
+input_path = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/csvData.csv"
 
 ########################################
 
 # Read in csv file
 
-data = pd.read_csv(input_path)
+data = pd.read_csv(input_path)[1:5]
 
 
 for index, row in data.iterrows():
-    with open(row['country'] + '.txt', 'w') as f:
-        f.write(f''row[''], row['c2'])
+    file = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/" + \
+        row['country'].replace(' ', '_') + '.txt'
+    with open(file, 'w') as f:
+        f.write("%s has a population of %s and an average IQ of %s.\n" %
+                (row['country'], row['pop2021'], row['finalIq']))
+        f.close()
+
+
+# linux command
+# touch test.txt | cat South_Korea.txt Japan.txt Hong_Kong.txt China.txt >> test.txt
+###
