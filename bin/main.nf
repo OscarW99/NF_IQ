@@ -15,7 +15,7 @@ process split_csv {
 
     script:
         """
-        Rscript ${workflow.projectDir}/bin/custom_scripts/plot_amd_split_by_IQ.R -d '$data_directory'
+        Rscript ${workflow.projectDir}/custom_scripts/plot_amd_split_by_IQ.R -d '$data_directory'
         """
 }
 
