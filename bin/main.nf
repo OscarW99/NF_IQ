@@ -5,7 +5,7 @@ nextflow.enable.dsl=2
 
 
 process split_csv {
-    publishDir '/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/NF_IQ//bin/publishDir/', pattern: '*.png'
+    publishDir "${workflow.projectDir}/publishDir/", mode:'copy', pattern: '*.png'
 
     input:
         val(data_directory)
