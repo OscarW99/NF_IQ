@@ -12,7 +12,7 @@ process split_csv {
 
     output:
         path '*.csv', emit: csv_out
-        path '*.png', emit png_scatter
+        path '*.png', emit: png_scatter
 
     script:
         """
