@@ -17,13 +17,16 @@ my_parser.add_argument('-d', '--data',
 args = my_parser.parse_args()
 
 input_path = args.input
-input_path = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/csvData.csv"
+# input_path = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/csvData.csv"
 
 ########################################
 
 # Read in csv file
 
 data = pd.read_csv(input_path)[1:5]
+
+print('hello world')
+print('input_path')
 
 
 for index, row in data.iterrows():

@@ -12,6 +12,7 @@ process split_csv {
 
     output:
         path '*.csv', emit: csv_out
+        // For somthing to appear in publishDir it must be added as an output as well.
         path '*.png', emit: png_scatter
 
     script:
@@ -20,8 +21,32 @@ process split_csv {
         """
 }
 
+
+
+process write_sentence_txt_files {
+
+    input:
+        val(data_directory)
+
+    output:
+        path '*.csv', emit: csv_out
+        // For somthing to appear in publishDir it must be added as an output as well.
+        path '*.png', emit: png_scatter
+
+    script:
+        """
+        Rscript ${workflow.projectDir}/custom_scripts/plot_and_split_by_IQ.R -d '$data_directory'
+        """
+}
+
+
+
+
+
+
 dir = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/NF_IQ/csvData.csv"
 split_csv_input = Channel.of(dir)
+
 
 workflow {
     split_csv(split_csv_input)
