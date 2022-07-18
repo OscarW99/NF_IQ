@@ -6,12 +6,12 @@ library(ggrepel)
 
 parser <- ArgumentParser(description='An executible R script to read in IQ data, plot a scatter plot and then split and save data into low vs int vs high csv files.')
 
-parser$add_argument("-data", "--d", type="character", dest="IQ_data_path", help="Provide the full path to the IQ data .csv file.")
+parser$add_argument("--data", "-d", type="character", dest="IQ_data_path", help="Provide the full path to the IQ data .csv file.")
 
 args <- parser$parse_args()
 IQ_data_path <- args$IQ_data_path
 
-IQ_data_path <- "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/csvData.csv"
+# IQ_data_path <- "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/csvData.csv"
 
 data <- read.csv(file=IQ_data_path)
 data <- as.data.frame(data)
