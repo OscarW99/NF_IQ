@@ -20,4 +20,8 @@ process split_csv {
 }
 
 dir = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/NF_IQ/csvData.csv"
+split_csv_input = Channel.of(dir)
 
+workflow {
+    split_csv(split_csv_input)
+}
