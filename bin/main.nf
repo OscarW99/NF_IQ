@@ -53,13 +53,12 @@ process cat_txt_files {
 
     script:
         """
-        cat $txt_file >> ${workflow.projectDir}/publishDir/final.txt
+        cat $txt_file >> final.txt
         """
 
 }
 
-
-
+// cat $txt_file >> ${workflow.projectDir}/publishDir/final.txt
 
 dir = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/NF_IQ/csvData.csv"
 split_csv_input = Channel.of(dir)
