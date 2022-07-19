@@ -49,7 +49,7 @@ process create_final_file {
 process cat_txt_files {
 
     input:
-        val(txt_file)
+        each(txt_file)
 
     script:
         """
@@ -69,6 +69,6 @@ workflow {
     //  the output of the above process gives somthing like this ['path/nimber/one', 'path/number/two'...] I need to flatten this output.
     write_sentence_txt_files(split_csv.out.csv_out.flatten())
     create_final_file()
-    cat_txt_files(write_sentence_txt_files.out.txt_out.flatten())
+    cat_txt_files(write_sentence_txt_files.out.txt_out)
 
 }
