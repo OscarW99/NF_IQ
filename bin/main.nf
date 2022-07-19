@@ -45,5 +45,6 @@ split_csv_input = Channel.of(dir)
 
 workflow {
     split_csv(split_csv_input)
-    write_sentence_txt_files(split_csv.out.csv_out)
+    //  the output of the above process gives somthing like this ['path/nimber/one', 'path/number/two'...] I need to flatten this output.
+    write_sentence_txt_files(split_csv.out.csv_out.flatten())
 }
