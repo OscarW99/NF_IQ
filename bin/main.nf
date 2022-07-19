@@ -22,7 +22,6 @@ process split_csv {
 }
 
 
-
 process write_sentence_txt_files {
 
     input:
@@ -46,5 +45,5 @@ split_csv_input = Channel.of(dir)
 
 workflow {
     split_csv(split_csv_input)
-    write_sentence_txt_files(split_csv_input.out.csv_out)
+    write_sentence_txt_files(split_csv.out.csv_out)
 }
