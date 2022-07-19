@@ -53,6 +53,7 @@ process cat_txt_files {
 
     script:
         """
+        touch final.txt
         cat $txt_file >> final.txt
         """
 
