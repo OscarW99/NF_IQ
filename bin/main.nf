@@ -26,20 +26,16 @@ process split_csv {
 process write_sentence_txt_files {
 
     input:
-        val(data_directory)
+        val(csv_file)
 
     output:
-        path '*.csv', emit: csv_out
-        // For somthing to appear in publishDir it must be added as an output as well.
-        path '*.png', emit: png_scatter
+        path '*.txt', emit: txt_out
 
     script:
         """
-        Rscript ${workflow.projectDir}/custom_scripts/plot_and_split_by_IQ.R -d '$data_directory'
+        python ${workflow.projectDir}/custom_scripts/make_sentences.py -d '$csv_file'
         """
 }
-
-
 
 
 
@@ -50,4 +46,5 @@ split_csv_input = Channel.of(dir)
 
 workflow {
     split_csv(split_csv_input)
+    write_sentence_txt_files(split_csv_input.out.csv_out)
 }

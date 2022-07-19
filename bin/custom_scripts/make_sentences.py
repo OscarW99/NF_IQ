@@ -23,15 +23,12 @@ input_path = args.input
 
 # Read in csv file
 
+# todo - change this to all data, not just first 5
 data = pd.read_csv(input_path)[1:5]
-print(data)
-print('hello world')
-print('input_path')
 
 
 for index, row in data.iterrows():
-    file = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/" + \
-        row['country'].replace(' ', '_') + '.txt'
+    file = row['country'].replace(' ', '_') + '.txt'
     with open(file, 'w') as f:
         f.write("%s has a population of %s and an average IQ of %s.\n" %
                 (row['country'], row['pop2021'], row['finalIq']))
