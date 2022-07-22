@@ -39,11 +39,11 @@ process write_sentence_txt_files {
 
 
 
-// process create_final_file {
-//     """
-//     touch ${workflow.projectDir}/publishDir/final.txt
-//     """
-// }
+process create_final_file {
+    """
+    touch ${workflow.workDir}/final.txt
+    """
+}
 
 
 process cat_txt_files {
@@ -53,8 +53,7 @@ process cat_txt_files {
 
     script:
         """
-        touch final.txt
-        cat *.txt >> final.txt
+        cat *.txt >> ${workflow.workDir}/final.txt
         """
 
 }
@@ -64,12 +63,12 @@ process cat_txt_files {
 dir = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/NF_IQ/csvData.csv"
 split_csv_input = Channel.of(dir)
 
-//  todo - I need to get all the txt_file paths in 'write_sentence_txt_files.out.txt_out' and cat them all to the same file
+
 workflow {
     split_csv(split_csv_input)
     //  the output of the above process gives somthing like this ['path/nimber/one', 'path/number/two'...] I need to flatten this output.
     write_sentence_txt_files(split_csv.out.csv_out.flatten())
-    // create_final_file()
+    create_final_file()
     cat_txt_files(write_sentence_txt_files.out.txt_out.collect())
 
 }
