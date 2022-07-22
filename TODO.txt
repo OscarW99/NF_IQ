@@ -1,5 +1,8 @@
 SATURDAY 22nd
 https://learn.gencore.bio.nyu.edu/nextflow/#nf-step-10
-1. Add configuration file
-2. Test running directly from github. Add notes to 
-2. Dockerise pipeline
+- Add configuration file
+- Add executors
+- Test running directly from github. Add notes to this repo on how to do this
+- Dockerise pipeline (add some more dependencies to make sure it works)
+- Test running from docker container
+- Add to dockerhub
