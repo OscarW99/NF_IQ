@@ -23,8 +23,7 @@ input_path = args.input
 
 # Read in csv file
 
-# todo - change this to all data, not just first 5
-data = pd.read_csv(input_path)[1:5]
+data = pd.read_csv(input_path)
 
 
 for index, row in data.iterrows():

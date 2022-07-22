@@ -1,0 +1,5 @@
+SATURDAY 22nd
+https://learn.gencore.bio.nyu.edu/nextflow/#nf-step-10
+1. Add configuration file
+2. Test running directly from github. Add notes to 
+2. Dockerise pipeline
