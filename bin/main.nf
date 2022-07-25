@@ -66,7 +66,7 @@ process foo {
 
     script:
         """
-        < $x zcat > final.txt
+        cat $x > final.txt
         """
 }
 
