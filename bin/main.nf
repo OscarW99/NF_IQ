@@ -59,11 +59,14 @@ process write_sentence_txt_files {
 
 process foo {
     input:
-        path x
+        file x
+
+    output:
+        file 'final.txt'
 
     script:
         """
-        cat $x >> final.txt
+        < $x zcat > final.txt
         """
 }
 
@@ -73,9 +76,9 @@ workflow {
     split_csv(split_csv_input)
     //  the output of the above process gives somthing like this ['path/nimber/one', 'path/number/two'...] I need to flatten this output.
     write_sentence_txt_files(split_csv.out.csv_out.flatten())
-    channel_out = write_sentence_txt_files.out.txt_out.collectFile()
-    channel_out.view()
-    // foo(channel_out.flatten())
+    channel_out = write_sentence_txt_files.out.txt_out
+    // channel_out.collectFile().view()
+    foo(channel_out).collectFile()
 
     // create_final_file()
     // cat_txt_files(write_sentence_txt_files.out.txt_out.collect())
