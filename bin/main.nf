@@ -38,6 +38,8 @@ process write_sentence_txt_files {
 
 
 process cat_txt_files {
+    publishDir "${workflow.projectDir}/publishDir/", mode:'copy', pattern: 'final.txt'
+
     input:
         file x
 
