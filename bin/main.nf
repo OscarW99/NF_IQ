@@ -74,7 +74,8 @@ workflow {
     //  the output of the above process gives somthing like this ['path/nimber/one', 'path/number/two'...] I need to flatten this output.
     write_sentence_txt_files(split_csv.out.csv_out.flatten())
     channel_out = write_sentence_txt_files.out.txt_out.collectFile()
-    foo(channel_out.flatten())
+    channel_out.view()
+    // foo(channel_out.flatten())
 
     // create_final_file()
     // cat_txt_files(write_sentence_txt_files.out.txt_out.collect())
