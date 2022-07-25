@@ -39,25 +39,33 @@ process write_sentence_txt_files {
 
 
 
-process create_final_file {
-    """
-    touch ${workflow.workDir}/final.txt
-    """
-}
+// process create_final_file {
+//     """
+//     touch ${workflow.workDir}/final.txt
+//     """
+// }
 
 
-process cat_txt_files {
+// process cat_txt_files {
 
+//     input:
+//         path '*.txt'
+
+//     script:
+//         """
+//         cat *.txt >> ${workflow.workDir}/final.txt
+//         """
+// }
+
+process foo {
     input:
-        path '*.txt'
+        path x
 
     script:
         """
-        cat *.txt >> ${workflow.workDir}/final.txt
+        cat $x >> final.txt
         """
-
 }
-
 
 
 workflow {
@@ -65,7 +73,8 @@ workflow {
     split_csv(split_csv_input)
     //  the output of the above process gives somthing like this ['path/nimber/one', 'path/number/two'...] I need to flatten this output.
     write_sentence_txt_files(split_csv.out.csv_out.flatten())
-    write_sentence_txt_files.out.txt_out.collectFile()
+    channel_out = write_sentence_txt_files.out.txt_out.collectFile()
+    foo(channel_out.flatten())
 
     // create_final_file()
     // cat_txt_files(write_sentence_txt_files.out.txt_out.collect())
