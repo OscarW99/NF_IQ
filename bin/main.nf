@@ -58,17 +58,16 @@ process cat_txt_files {
 
 }
 
-// cat $txt_file >> ${workflow.projectDir}/publishDir/final.txt
-
-dir = "/ahg/regevdata/projects/lungCancerBueno/Results/10x_nsclc_41421/data/PRIV_GITHUB/NF_IQ/csvData.csv"
-split_csv_input = Channel.of(dir)
 
 
 workflow {
+    split_csv_input = Channel.of(dir)
     split_csv(split_csv_input)
     //  the output of the above process gives somthing like this ['path/nimber/one', 'path/number/two'...] I need to flatten this output.
     write_sentence_txt_files(split_csv.out.csv_out.flatten())
-    create_final_file()
-    cat_txt_files(write_sentence_txt_files.out.txt_out.collect())
+    write_sentence_txt_files.out.txt_out.collectFile()
+
+    // create_final_file()
+    // cat_txt_files(write_sentence_txt_files.out.txt_out.collect())
 
 }
