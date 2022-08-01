@@ -15,4 +15,7 @@ providers {
 
 
 
-... You generate the personal access token from Settings/Developer Settings/    
+... You generate the personal access token from Settings/Developer Settings/
+
+----------------------------------------------------------------------------
+'main.nf' and 'nextflow.config' both need to be in the root directory.
