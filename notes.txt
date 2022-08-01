@@ -1,0 +1,18 @@
+To access a private GitHub repo, you need to put credentials in this file/folder:
+$HOME/.nextflow/scm
+- see my scm file
+
+Format...
+
+providers {
+
+  github {
+    user = 'me'
+    password = 'my-personal-access-token'
+  }
+
+}
+
+
+
+... You generate the personal access token from Settings/Developer Settings/    
