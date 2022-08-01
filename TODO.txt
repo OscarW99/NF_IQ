@@ -1,4 +1,4 @@
-SATURDAY 22nd
+SATURDAY 30th
 https://learn.gencore.bio.nyu.edu/nextflow/#nf-step-10
 - Add configuration file
 - Add executors
