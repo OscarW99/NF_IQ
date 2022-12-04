@@ -19,3 +19,4 @@ providers {
 
 ----------------------------------------------------------------------------
 'main.nf' and 'nextflow.config' both need to be in the root directory.
+
