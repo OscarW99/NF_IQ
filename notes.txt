@@ -25,3 +25,16 @@ providers {
 To completely remove a pipeline and re-download...
 rm -rf ~/.nextflow/assets/OscarW99/NF_IQ
 then re pull it using 'nextflow run OscarW99/REPO_NAME'
+
+
+
+
+DOCKER
+-------
+You can create a docker container for each individual process.
+I was thinking it would be better to have a docker container for the whole pipeline however,
+having one per process would be better because then you can reuse a process across different pipelines.
+
+
+Evan blog..
+'One of the golden rules in Nextflow development is to have a small test dataset that can run the full pipeline in minutes with few computational resources, ie can run on a laptop.'
